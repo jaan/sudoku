@@ -1,0 +1,6 @@
+/*variables.less*/
+/*Common LESS mixins*/
+.body {
+  margin: 0px;
+  padding: 0px;
+}
