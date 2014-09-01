@@ -1,0 +1,13 @@
+{
+    "name": "hammer",
+    "version": "0.0.1",
+    "description": "Sudoku Game",
+    "keywords": [ "sudoku" ],
+    "repositories": [
+        {
+        "type": "git",
+        "url": "https://github.com/jaan/sudoku.git"
+        }
+    ],
+    "main": "main.js"
+}
