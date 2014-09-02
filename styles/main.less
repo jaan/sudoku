@@ -15,19 +15,55 @@ body{
 		font-size: 12px;
 	}
 }
-#board{
+#boardWrapper{
 	margin:10px 5%;
-	div{
-		width:10%;
-		height:10%;
-		border:1px solid @gray;
-		display:inline;
-		float:left;
-		text-align:center;
-		font-weight:bold;
+	.box-sizing;
+	#board{
+		div{
+			width:10%;
+			height:10%;
+			border:1px solid @gray;
+			display:inline;
+			float:left;
+			text-align:center;
+			font-weight:bold;
+			padding:5px 0px;
+			/*.box-sizing;*/
+			&.gray{
+				background-color: @lightgray;
+			}
+			/*&:nth-child(3n+3){
+				background-color: red;
+			};*/
+			&.verticalBorder{
+				border-right: 1px solid red;
+			}
+		}
+	}
+	#numberSelector{
+		padding:20px 0px;
+		clear:both;
+		text-align: center;
+		span {
+			.rounded(30px);
+			font-weight:bold;
+			border:1px solid @gray;
+			margin:0px 2px;
+			padding:3px 7px;
+			color:@white;
+			background-color: #1FBAD6;
+		}
+	}
+	#timer {
+		clear:both;
+		display:block;
 		padding:5px 0px;
-		&.gray{
-			background-color: @gray;
+		font-weight:bold;
+		#minutes{
+			font-size:14px;
+		}
+		#seconds{
+			font-size:14px;
 		}
 	}
 }
