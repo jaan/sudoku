@@ -14,3 +14,19 @@ body {
 #header .navigation {
   font-size: 12px;
 }
+#board {
+  margin: 10px 5%;
+}
+#board div {
+  width: 10%;
+  height: 10%;
+  border: 1px solid #808080;
+  display: inline;
+  float: left;
+  text-align: center;
+  font-weight: bold;
+  padding: 5px 0px;
+}
+#board div.gray {
+  background-color: #808080;
+}
