@@ -2,73 +2,73 @@
 @import "mixins.less";
 
 body{
-	margin:0px;
-	padding: 0px;
-	font-family:@font-family;
+    margin:0px;
+    padding: 0px;
+    font-family:@font-family;
 }
 
 #header {
-	color: black;
-	border-bottom: 1px solid @gray;
-	padding:10px;
-	.navigation {
-		font-size: 12px;
-	}
+    color: black;
+    border-bottom: 1px solid @gray;
+    padding:10px;
+    .navigation {
+        font-size: 12px;
+    }
 }
 #boardWrapper{
-	margin:10px 5%;
-	.box-sizing;
-	#board{
-		.box-shadow(0px 0px 5px 5px #bdc3c7);
-		overflow:auto;
-		div{
-			width:10%;
-			height:10%;
-			border:1px solid @gray;
-			display:inline;
-			float:left;
-			text-align:center;
-			font-weight:bold;
-			padding:5px 0px;
-			cursor:pointer;
-			/*.box-sizing;*/
-			&.gray{
-				background-color: @lightgray;
-			}
-			
-			&.defaults {
-				cursor: default;
-				color:@disabledColor;	
-			}
-			&.selected{
-				background-color: @buttonColor;
-			}
-		}
-	}
-	#numberSelector{
-		padding:20px 0px;
-		clear:both;
-		text-align: center;
-		span {
-			.rounded(30px);
-			font-weight:bold;
-			border:1px solid @gray;
-			margin:0px 2px;
-			padding:3px 8px;
-			color:@white;
-			background-color: @buttonColor;
-		}
-	}
-	#timer {
-		clear:both;
-		display:block;
-		padding:5px 0px;
-		font-weight:bold;
-		#minutes{
-			font-size:14px;
-		}
-		#seconds{
-			font-size:14px;
-		}
-	}
+    margin:10px 5%;
+    .box-sizing;
+    #board{
+        .box-shadow(0px 0px 5px 5px #bdc3c7);
+        overflow:auto;
+        div{
+            width:10%;
+            height:10%;
+            border:1px solid @gray;
+            display:inline;
+            float:left;
+            text-align:center;
+            font-weight:bold;
+            padding:5px 0px;
+            cursor:pointer;
+            /*.box-sizing;*/
+            &.gray{
+                background-color: @lightgray;
+            }
+            
+            &.defaults {
+                cursor: default;
+                color:@disabledColor;
+            }
+            &.selected{
+                background-color: @buttonColor;
+            }
+        }
+    }
+    #numberSelector{
+        padding:20px 0px;
+        clear:both;
+        text-align: center;
+        span {
+            .rounded(30px);
+            font-weight:bold;
+            border:1px solid @gray;
+            margin:0px 2px;
+            padding:3px 8px;
+            color:@white;
+            background-color: @buttonColor;
+        }
+    }
+    #timer {
+        clear:both;
+        display:block;
+        padding:5px 0px;
+        font-weight:bold;
+        #minutes{
+            font-size:14px;
+        }
+        #seconds{
+            font-size:14px;
+        }
+    }
 }
