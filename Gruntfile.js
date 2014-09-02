@@ -81,6 +81,8 @@ module.exports = function(grunt) {
                 options: {
                     middleware: function(connect) {
                         return [
+                        	connect().use('/styles', connect.static('./styles')),
+                        	connect().use('/scripts', connect.static('./scripts')),
                             connect.static("./")
                         ];
                     }

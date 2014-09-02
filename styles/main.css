@@ -1,6 +1,16 @@
 /*variables.less*/
+/*Colors*/
 /*Common LESS mixins*/
-.body {
+body {
   margin: 0px;
   padding: 0px;
+  font-family: 'HelveticaNeue, Helvetica, Segoe, Sans-Serif, Arial';
+}
+#header {
+  color: black;
+  border-bottom: 1px solid #808080;
+  padding: 10px;
+}
+#header .navigation {
+  font-size: 12px;
 }
