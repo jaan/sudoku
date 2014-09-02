@@ -8,16 +8,24 @@
 
 	var sudoku = {
 		generateBoardTemplate: function (level){
-			var i, j, htmlFragment="", defaultBoardData= this.getBoardData(level), cellDefaultValue, bgClass="", bgIndex=0;
-			htmlFragment ="<div id='board'>"
+			var i, j, htmlFragment='', defaultBoardData= this.getBoardData(level), cellDefaultValue, bgClass;
+			htmlFragment ="<div id='board'>";
 			for(i=0;i<81;i++){
 				var defaultBoardCellData = defaultBoardData[i];
+				bgClass='';
 
-				cellDefaultValue =(defaultBoardCellData !==0)?defaultBoardCellData:'.';
+				if(defaultBoardCellData !==0){
+					cellDefaultValue = defaultBoardCellData;
+					bgClass = 'defaults ';
+				}else{
+					cellDefaultValue = '.';
+					bgClass = 'fillers ';
+				}
 
 				//Group the small squares of 3*3 for background color
-				bgClass = (Math.floor((i%boards.largeSquare)/boards.smallSquare)+Math.floor((Math.floor(i/boards.largeSquare))/boards.smallSquare)%2)%2?"":"gray";
+				bgClass += (Math.floor((i%boards.largeSquare)/boards.smallSquare)+Math.floor((Math.floor(i/boards.largeSquare))/boards.smallSquare)%2)%2?"":"gray";
 				
+
 				//This should be moved to templates dust/jade
 				htmlFragment +="<div class='board-"+i+" "+bgClass+"'>"+cellDefaultValue+"</div>";
 
@@ -29,11 +37,11 @@
 			htmlFragment +="<div id='timer'>Timer  <span id='minutes'></span> : <span id='seconds'></span></div>";
 			$("#boardWrapper").html(htmlFragment);
 		},
-		getBoardData: function(level){
+		getBoardData: function (level){
 			//Returns a board array
 			return boards[level];
 		},
-		startTimer: function(){
+		startTimer: function (){
 			var startTime = new Date;
 			console.log("Starting Timer");
 			return function(){
@@ -48,11 +56,29 @@
 				}
 				setInterval(displayTimer, 1000);
 			}
-
 		},
-		init:function(level){
+		bindCellEvents: function (){
+			var that=this;
+			$("#board div.fillers").bind("click",function(){
+				that.clearCellSelection();
+				$(this).addClass("selected");
+			});
+		},
+		updateCell: function (){
+			$("#numberSelector span").bind("click",function(){
+				$("#board div.fillers.selected").text($(this).text());
+			});
+		},
+		clearCellSelection: function (){
+			$("#board div.fillers").each(function(){
+				$(this).removeClass("selected");
+			});
+		},
+		init: function (level){
 			this.generateBoardTemplate(level);
 			this.startTimer()();
+			this.bindCellEvents();
+			this.updateCell();
 		}
 	};
 

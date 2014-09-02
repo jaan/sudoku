@@ -19,6 +19,8 @@ body{
 	margin:10px 5%;
 	.box-sizing;
 	#board{
+		.box-shadow(0px 0px 5px 5px #bdc3c7);
+		overflow:auto;
 		div{
 			width:10%;
 			height:10%;
@@ -28,15 +30,18 @@ body{
 			text-align:center;
 			font-weight:bold;
 			padding:5px 0px;
+			cursor:pointer;
 			/*.box-sizing;*/
 			&.gray{
 				background-color: @lightgray;
 			}
-			/*&:nth-child(3n+3){
-				background-color: red;
-			};*/
-			&.verticalBorder{
-				border-right: 1px solid red;
+			
+			&.defaults {
+				cursor: default;
+				color:@disabledColor;	
+			}
+			&.selected{
+				background-color: @buttonColor;
 			}
 		}
 	}
@@ -49,9 +54,9 @@ body{
 			font-weight:bold;
 			border:1px solid @gray;
 			margin:0px 2px;
-			padding:3px 7px;
+			padding:3px 8px;
 			color:@white;
-			background-color: #1FBAD6;
+			background-color: @buttonColor;
 		}
 	}
 	#timer {

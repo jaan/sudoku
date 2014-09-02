@@ -4,7 +4,7 @@
 body {
   margin: 0px;
   padding: 0px;
-  font-family: 'HelveticaNeue, Helvetica, Segoe, Sans-Serif, Arial';
+  font-family: HelveticaNeue, Helvetica, Segoe, Sans-Serif, Arial;
 }
 #header {
   color: black;
@@ -21,6 +21,12 @@ body {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
+#boardWrapper #board {
+  -webkit-box-shadow: 0px 0px 5px 5px #bdc3c7;
+  -moz-box-shadow: 0px 0px 5px 5px #bdc3c7;
+  box-shadow: 0px 0px 5px 5px #bdc3c7;
+  overflow: auto;
+}
 #boardWrapper #board div {
   width: 10%;
   height: 10%;
@@ -30,16 +36,18 @@ body {
   text-align: center;
   font-weight: bold;
   padding: 5px 0px;
+  cursor: pointer;
   /*.box-sizing;*/
-  /*&:nth-child(3n+3){
-				background-color: red;
-			};*/
 }
 #boardWrapper #board div.gray {
   background-color: #efefef;
 }
-#boardWrapper #board div.verticalBorder {
-  border-right: 1px solid red;
+#boardWrapper #board div.defaults {
+  cursor: default;
+  color: #777777;
+}
+#boardWrapper #board div.selected {
+  background-color: #1fbad6;
 }
 #boardWrapper #numberSelector {
   padding: 20px 0px;
@@ -53,9 +61,9 @@ body {
   font-weight: bold;
   border: 1px solid #808080;
   margin: 0px 2px;
-  padding: 3px 7px;
+  padding: 3px 8px;
   color: #ffffff;
-  background-color: #1FBAD6;
+  background-color: #1fbad6;
 }
 #boardWrapper #timer {
   clear: both;
