@@ -8,10 +8,14 @@
 
     var sudoku = {
         boardArray:[],
+        level:"easy",
         generateBoardTemplate: function (level){
             var i, j, htmlFragment='', defaultBoardData=this.getBoardData(level), cellDefaultValue, bgClass;
 
-            this.boardArray = defaultBoardData;
+            this.level = level;
+            
+            //Clone the original array
+            this.boardArray = $.extend(true,[],defaultBoardData); 
             htmlFragment ="<div id='board'>";
 
             for(i=0;i<81;i++){
@@ -39,6 +43,7 @@
 
             //Timer container
             htmlFragment +="<div id='timer'>Timer  <span id='minutes'></span> : <span id='seconds'></span></div>";
+            htmlFragment +="<div id='settings'>Timer  <span id='clear'>Clear Board</span> | <span id='nextBoard'>Next Board</span></div>";
             $("#boardWrapper").html(htmlFragment);
         },
         getBoardData: function (level){
@@ -49,17 +54,19 @@
             var startTime = new Date;
             console.log("Starting Timer");
             return function(reset){
-                // if(reset){
-                //     startTime = new Date;
-                //     return;
-                // }
+                if(reset){
+                    startTime = new Date;
+                    return;
+                }
+                var $minutes = $("#minutes");
+                var $seconds = $("#seconds");
                 function displayTimer(){
                     var delta = new Date - startTime; //Time in ms
                     var minutes = ('0'+Math.floor(delta/60/1000)).slice(-2);
                     var seconds = ('0'+Math.floor((delta/1000)%60)).slice(-2);
 
-                    $("#minutes").text(minutes);
-                    $("#seconds").text(seconds);
+                    $minutes.text(minutes);
+                    $seconds.text(seconds);
 
                 }
                 setInterval(displayTimer, 1000);
@@ -67,11 +74,18 @@
         },
         bindCellEvents: function (){
             var that=this;
-            //TBD: add touch events
+            //TBD: add touch events, 300ms delay for clicks
             $("#board div.fillers").bind("click",function(){
                 that.clearCellSelection();
                 $(this).addClass("selected");
             });
+
+            $("#clear").bind("click",function(e){
+                that.resetState(true);
+                that.init(that.level);
+
+            });
+
         },
         updateCell: function (){
             var that=this;
@@ -112,10 +126,11 @@
                         if(typeof storedState !=="undefined" && (storedState instanceof Array) && storedState.length == (largeSquare *largeSquare)){
                             $("#board div").each(function(index){
                                 var $this =$(this);
-                                if(!$this.hasClass("defaults") && storedState[index] !==0){
-                                    $this.text(storedState[index]);
+                                var storedStateIndexVal = storedState[index];
+                                if(!$this.hasClass("defaults") && storedStateIndexVal !==0){
+                                    $this.text(storedStateIndexVal);
                                     //Update the delta to the board
-                                    that.boardArray[index] = storedState[index];
+                                    that.boardArray[index] = storedStateIndexVal;
                                 }
                             });
                         }
