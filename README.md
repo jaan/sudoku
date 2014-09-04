@@ -3,7 +3,9 @@ sudoku
 
 My version of suu dooooo kooooooooooo
 
-Basic version is ready.
+http://jaan.github.io/sudoku/
+
+Basic version is ready. Need to add styles.
 
 ##How to Setup the Sudoku Project?  
 
