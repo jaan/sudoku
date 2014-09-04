@@ -2,9 +2,11 @@
 /*Colors*/
 /*Common LESS mixins*/
 body {
-  margin: 0px;
+  margin: 0px auto;
   padding: 0px;
   font-family: HelveticaNeue, Helvetica, Segoe, Sans-Serif, Arial;
+  font-size: 14px;
+  min-width: 300px;
 }
 #header {
   color: black;
@@ -30,23 +32,62 @@ body {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
+#boardWrapper #boardheader {
+  clear: both;
+}
+#boardWrapper #boardheader #levels {
+  padding-bottom: 15px;
+  float: left;
+}
+#boardWrapper #boardheader #levels span {
+  margin: 5px;
+  padding: 3px 5px;
+  border: 1px solid #808080;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  text-transform: capitalize;
+}
+#boardWrapper #boardheader #levels span.selected {
+  background-color: #1fbad6;
+  -webkit-transition: all 0.5 ease-in-out;
+  -moz-transition: all 0.5 ease-in-out;
+  -o-transition: all 0.5 ease-in-out;
+  transition: all 0.5 ease-in-out;
+}
+#boardWrapper #boardheader #timer {
+  float: right;
+  display: inline-block;
+  font-weight: bold;
+}
+#boardWrapper #boardheader #timer #minutes {
+  font-size: 14px;
+}
+#boardWrapper #boardheader #timer #seconds {
+  font-size: 14px;
+}
 #boardWrapper #board {
-  -webkit-box-shadow: 0px 0px 5px 5px #bdc3c7;
-  -moz-box-shadow: 0px 0px 5px 5px #bdc3c7;
-  box-shadow: 0px 0px 5px 5px #bdc3c7;
+  border-top: 1px solid #808080;
+  border-left: 1px solid #808080;
   overflow: auto;
+  clear: both;
 }
 #boardWrapper #board div {
-  width: 10%;
+  width: 11%;
   height: 10%;
-  border: 1px solid #808080;
+  border-right: 1px solid #808080;
+  border-bottom: 1px solid #808080;
   display: inline;
   float: left;
   text-align: center;
   font-weight: bold;
   padding: 5px 0px;
   cursor: pointer;
-  /*.box-sizing;*/
+  line-height: 20px;
+  -ms-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 #boardWrapper #board div.gray {
   background-color: #efefef;
@@ -57,6 +98,10 @@ body {
 }
 #boardWrapper #board div.selected {
   background-color: #1fbad6;
+  -webkit-transition: all 0.3 ease-in-out;
+  -moz-transition: all 0.3 ease-in-out;
+  -o-transition: all 0.3 ease-in-out;
+  transition: all 0.3 ease-in-out;
 }
 #boardWrapper #numberSelector {
   padding: 20px 0px;
@@ -74,15 +119,31 @@ body {
   color: #ffffff;
   background-color: #1fbad6;
 }
-#boardWrapper #timer {
-  clear: both;
-  display: block;
-  padding: 5px 0px;
-  font-weight: bold;
+#boardWrapper #settings {
+  margin-top: 20px;
 }
-#boardWrapper #timer #minutes {
-  font-size: 14px;
+#boardWrapper .btn {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 3px 5px;
+  text-transform: capitalize;
+  background-color: #1fbad6;
+  border: 1px solid #808080;
 }
-#boardWrapper #timer #seconds {
-  font-size: 14px;
+@media (min-width: 320px) {
+  #boardWrapper #board div {
+    line-height: 25px;
+  }
+}
+@media (min-width: 767px) {
+  #boardWrapper {
+    max-width: 850px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  #boardWrapper #board div {
+    line-height: 35px;
+  }
 }

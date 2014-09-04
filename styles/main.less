@@ -2,9 +2,11 @@
 @import "mixins.less";
 
 body{
-    margin:0px;
+    margin:0px auto;
     padding: 0px;
     font-family:@font-family;
+    font-size:14px;
+    min-width:300px;
 }
 
 #header {
@@ -27,20 +29,55 @@ body{
 #boardWrapper{
     margin:10px 5%;
     .box-sizing;
+
+    #boardheader{
+        clear:both;
+        #levels{
+            padding-bottom:15px;
+            float:left;
+            span {
+                margin:5px;
+                padding:3px 5px;
+                border:1px solid @gray;
+                .rounded(5px);
+                text-transform: capitalize;
+                &.selected {
+                    background-color: @buttonColor;
+                    .transition(0.5,ease-in-out);
+                }
+            }
+        }
+        #timer {
+            float:right;
+            display:inline-block;
+            font-weight:bold;
+            #minutes{
+                font-size:14px;
+            }
+            #seconds{
+                font-size:14px;
+            }
+        }
+    }
+
     #board{
-        .box-shadow(0px 0px 5px 5px #bdc3c7);
+        border-top:1px solid @gray;
+        border-left:1px solid @gray;
         overflow:auto;
+        clear:both;
         div{
-            width:10%;
+            width:11%;
             height:10%;
-            border:1px solid @gray;
+            border-right:1px solid @gray;
+            border-bottom:1px solid @gray;
             display:inline;
             float:left;
             text-align:center;
             font-weight:bold;
             padding:5px 0px;
             cursor:pointer;
-            /*.box-sizing;*/
+            line-height:20px;
+            .box-sizing;
             &.gray{
                 background-color: @lightgray;
             }
@@ -51,6 +88,7 @@ body{
             }
             &.selected{
                 background-color: @buttonColor;
+                .transition(0.3,ease-in-out);
             }
         }
     }
@@ -68,16 +106,31 @@ body{
             background-color: @buttonColor;
         }
     }
-    #timer {
-        clear:both;
-        display:block;
-        padding:5px 0px;
-        font-weight:bold;
-        #minutes{
-            font-size:14px;
-        }
-        #seconds{
-            font-size:14px;
+    #settings {
+        margin-top: 20px;
+    }
+    .btn {
+        .rounded(5px);
+        margin:5px;
+        padding:3px 5px;
+        text-transform: capitalize;
+        background-color: @buttonColor;
+        border:1px solid @gray;
+    }
+}
+
+@media (min-width: 320px) {
+    #boardWrapper #board div{
+        line-height: 25px;
+    }
+}
+@media (min-width: 767px) {
+    #boardWrapper{
+        max-width:850px;
+        margin:0 auto;
+        text-align: center;
+         #board div{
+            line-height: 35px;
         }
     }
 }
